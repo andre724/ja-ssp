@@ -60,3 +60,7 @@ Below is the first database schema version
 
 ![alt-text](./docs/modeloBOT.drawio.png)
 
+## Docs
+
+* [GIT Flow](./docs/git_flow.md)
+
