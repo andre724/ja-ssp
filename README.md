@@ -60,3 +60,16 @@ Below is the first database schema version
 
 ![alt-text](./docs/modeloBOT.drawio.png)
 
+### installation steps
+
+```
+git checkout -b story1
+pip install pipenv
+pipenv install django
+django-admin startproject ssp
+mkdir .env
+follow the code in site: https://django-environ.readthedocs.io/en/latest/
+git add .
+git commit -m "Add dependencies, django and .env"
+git push origin story1
+```
