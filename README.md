@@ -61,5 +61,5 @@ Below is the first database schema version
 ![alt-text](./docs/modeloBOT.drawio.png)
 
 ### installation steps
+![alt-text](./docs/installation.md)
 
-```
