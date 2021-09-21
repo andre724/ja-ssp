@@ -38,6 +38,10 @@ below a list of use cases available for users.
 
 ## Technical Details
 
+### Installation steps
+
+[Installation](./docs/installation.md)
+
 ### Architecture overview
 
 ![SSP.drawio](./docs/SSP.drawio.png)
@@ -60,6 +64,4 @@ Below is the first database schema version
 
 ![alt-text](./docs/modeloBOT.drawio.png)
 
-### installation steps
-![alt-text](./docs/installation.md)
 
