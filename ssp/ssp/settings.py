@@ -86,11 +86,11 @@ WSGI_APPLICATION = 'ssp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "db_name",
-        'USER': "db_username",
-        'PASSWORD': "db_password",
-        'HOST': "db_host",
-        'PORT': "db_port",  # 5432 by default
+        'NAME': env("NAME_DB"),
+        'USER': env("USER_DB"),
+        'PASSWORD': env("PASSWORD_DB"),
+        'HOST': env("HOST_DB"),
+        'PORT': env("PORT_DB"),  # 5432 by default
     }
 }
 
