@@ -38,6 +38,10 @@ below a list of use cases available for users.
 
 ## Technical Details
 
+### Installation steps
+
+[Installation](./docs/installation.md)
+
 ### Architecture overview
 
 ![SSP.drawio](./docs/SSP.drawio.png)
@@ -59,8 +63,3 @@ Below is a PDF with the App screens, it's only one reference not necessary that 
 Below is the first database schema version
 
 ![alt-text](./docs/modeloBOT.drawio.png)
-
-## Docs
-
-* [GIT Flow](./docs/git_flow.md)
-
