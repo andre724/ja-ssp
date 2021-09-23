@@ -63,5 +63,3 @@ Below is a PDF with the App screens, it's only one reference not necessary that 
 Below is the first database schema version
 
 ![alt-text](./docs/modeloBOT.drawio.png)
-
-
