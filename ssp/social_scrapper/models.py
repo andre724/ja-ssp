@@ -1,12 +1,16 @@
 
 from django.db import models
-from django.db.models.fields import BooleanField, CharField, IntegerField, URLField
+from django.db.models.fields import BooleanField, CharField, URLField
 from django.db.models.fields.json import JSONField
 from django.db.models.fields.related import ForeignKey
 
 STATUS_CHOICES = [
-    ("FOUND","FOUND"),
-    ("PROCESS", "PROCESS")
+    ("FOUND", "FOUND"),
+    ("SENT", "SENT"),
+    ("WORKING", "WORKIN"),
+    ("DONE", "DONE"),
+    ("ERROR", "ERROR"),
+    ("MISSING", "MISSING")
 ]
 # Create your models here.
 class SocialMedia(models.Model):
@@ -29,7 +33,7 @@ class SocialMediaAuthUser(models.Model):
     username = CharField(null= False, blank= False,max_length=200)
     password = CharField(max_length=200)
     is_active = BooleanField(default=True)
-    social_media = ForeignKey(SocialMedia,on_delete= models.CASCADE)
+    social_media = ForeignKey(SocialMedia,on_delete= models.PROTECT)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -41,7 +45,7 @@ class SocialMediaUser(models.Model):
         unique_together = ('username', 'social_media')
     username= CharField(max_length=200, null=False,blank=False)
     link = URLField(null=False,blank=False)
-    social_media= ForeignKey(SocialMedia,on_delete=models.CASCADE )
+    social_media= ForeignKey(SocialMedia,on_delete=models.PROTECT )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -51,9 +55,10 @@ class Post(models.Model):
     Model for the scrapped post from the SocialMediaUser
     account
     '''
+    user= ForeignKey(SocialMediaUser, on_delete=models.PROTECT)
     link = URLField(null=False,blank=False)
     metadata= JSONField(null= True)
     status= CharField(max_length=10, choices= STATUS_CHOICES)
-    post_type= CharField(max_length= 200)
+    post_type= CharField(max_length= 200, default= 'Image')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
