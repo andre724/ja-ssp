@@ -7,7 +7,7 @@ from django.db.models.fields.related import ForeignKey
 STATUS_CHOICES = [
     ("FOUND", "FOUND"),
     ("SENT", "SENT"),
-    ("WORKING", "WORKIN"),
+    ("WORKING", "WORKING"),
     ("DONE", "DONE"),
     ("ERROR", "ERROR"),
     ("MISSING", "MISSING")
