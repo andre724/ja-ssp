@@ -6,7 +6,7 @@
     * django-environ
     * psycopg2 ( https://www.psycopg.org/ )
     * pipenv
-
+    * gevent
 ## Steps
 1. create folder
 

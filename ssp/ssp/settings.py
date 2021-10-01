@@ -26,17 +26,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env(
   # set casting, default value
   DEBUG=(bool, False)
+
 )
 environ.Env.read_env(env_file=os.path.join(BASE_DIR, ".env"))
-
-
 
 SECRET_KEY = env('SECRET_KEY') 
 DEBUG = env("DEBUG")
 
-
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -47,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_celery_results',
     'social_scrapper.apps.SocialScrapperConfig',
 ]
 
@@ -90,8 +88,8 @@ DATABASES = {
         'NAME': env("NAME_DB"),
         'USER': env("USER_DB"),
         'PASSWORD': env("PASSWORD_DB"),
-        'HOST': env("HOST_DB"),
-        'PORT': env("PORT_DB"),  # 5432 by default
+        'HOST': env("HOST_DB", default='localhost'),
+        'PORT': env("PORT_DB", default=5432),  # 5432 by default
     }
 }
 
@@ -140,5 +138,16 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+# CELERY_CONFIGURATIONS
+# Celery Configuration Options
+CELERY_TIMEZONE = "Australia/Tasmania"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
 
+CELERY_RESULT_BACKEND = 'django-db'
 
+BROKER_URL = 'amqp://guest:**@127.0.0.1:5672//:'
+# CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
