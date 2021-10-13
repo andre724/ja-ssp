@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import SSP_User
+from .models import SSPUser
 # Register your models here.
-admin.register(SSP_User)
+admin.register(SSPUser)
