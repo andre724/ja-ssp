@@ -12,20 +12,25 @@ STATUS_CHOICES = [
     ("ERROR", "ERROR"),
     ("MISSING", "MISSING")
 ]
-# Create your models here.
-class SocialMedia(models.Model):
+
+class TrackingModel(models.Model):
+    class Meta:
+        abstract = True
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+
+class SocialMedia(TrackingModel):
     '''
     Model that specifies which social medias the bots can be used on
 
     '''
     name = CharField(unique=True, null= False, blank= False,max_length=200)
     base_link= URLField(null=False, blank=False)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    
 
 
-class SocialMediaAuthUser(models.Model):
+
+class SocialMediaAuthUser(TrackingModel):
     '''
     Model for the account's that the bots will be using
     to log in their respective social medias.
@@ -34,10 +39,9 @@ class SocialMediaAuthUser(models.Model):
     password = CharField(max_length=200)
     is_active = BooleanField(default=True)
     social_media = ForeignKey(SocialMedia,on_delete= models.PROTECT)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+   
 
-class SocialMediaUser(models.Model):
+class SocialMediaUser(TrackingModel):
     '''
     Model for the account that was scrapped
     '''
@@ -46,11 +50,10 @@ class SocialMediaUser(models.Model):
     username= CharField(max_length=200, null=False,blank=False)
     link = URLField(null=False,blank=False)
     social_media= ForeignKey(SocialMedia,on_delete=models.PROTECT )
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
 
-class Post(models.Model):
+
+class Post(TrackingModel):
     '''
     Model for the scrapped post from the SocialMediaUser
     account
@@ -60,5 +63,3 @@ class Post(models.Model):
     metadata= JSONField(null= True)
     status= CharField(max_length=10, choices= STATUS_CHOICES)
     post_type= CharField(max_length= 200, default= 'Image')
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)

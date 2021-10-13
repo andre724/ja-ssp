@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_celery_results',
     'social_scrapper.apps.SocialScrapperConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -151,3 +152,6 @@ BROKER_URL = 'amqp://guest:**@127.0.0.1:5672//:'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
+
+
+AUTH_USER_MODEL = 'accounts.SSP_USER'
