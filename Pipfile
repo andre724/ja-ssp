@@ -7,12 +7,12 @@ name = "pypi"
 django = "*"
 django-environ = "*"
 psycopg2 = "*"
-
 celery = "*"
 django-celery-results = "*"
 rabbitmq = "*"
 gevent = "*"
 gunicorn = "==20.1.0"
+django-crispy-forms = "*"
 
 [dev-packages]
 

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django_celery_results',
     'social_scrapper.apps.SocialScrapperConfig',
     'accounts.apps.AccountsConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -113,6 +114,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS= [
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.SSPUserBackends'
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -155,3 +160,5 @@ CELERY_RESULT_SERIALIZER = 'json'
 
 
 AUTH_USER_MODEL = 'accounts.SSPUSER'
+
+LOGIN_URL= "http://127.0.0.1:8000/login/"

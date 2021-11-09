@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load crispy_forms_tags %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSP - Dashboard</title>
+</head>
+<body>
+    <h1 class="page-header">SSP</h1>
+    <div class="login-box">
+        <form method="POST" class="login-form">
+            {% csrf_token %}
+            {{form|crispy}}
+            <a href="">Forgot password?</a>
+            <button type='submit' class="btn-login">Login</button>
+        </form>
+        {% if user is None%}
+            <b class="error-text">Inserted e-mail or password don't exist!</b>
+        {% endif %}
+    </div>
+</body>
+</html>
